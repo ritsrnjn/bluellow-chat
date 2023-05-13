@@ -52,28 +52,37 @@ class ChatRoom extends Component {
   render() {
     return (
       <div className="app">
-        <header className="app-header">
-          <h2>Bluellow Chat</h2>
-        </header>
-        <div className="chat-room">
-          {this.state.messages.map(message => (
-            <div key={message.id} className={`message ${message.sender}`}>
-              <p>{message.text}</p>
-            </div>
-          ))}
+        <div className="sidebar">
+          <h1>ChatGPT Clone</h1>
+          <p>Chat with AI</p>
         </div>
-        <form className="input-form" onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChange}
-            value={this.state.text}
-            placeholder="Type a message..."
-            className="input-field"
-          />
-          <button type="submit" className="submit-button">Send</button>
-        </form>
+        <div className="chat-room-container">
+          <div className="chat-room">
+            {this.state.messages.map(message => (
+              <div className={`message ${message.sender}`} key={message.id}>
+                <div>{message.text}</div>
+              </div>
+            ))}
+            <div style={{ float:"left", clear: "both" }}
+                 ref={(el) => { this.messagesEnd = el; }}>
+            </div>
+          </div>
+          <form className="input-form" onSubmit={this.handleSubmit}>
+            <input
+              className="input-field"
+              type="text"
+              value={this.state.text}
+              onChange={this.handleChange}
+              placeholder="Type your message here"
+            />
+            <input className="submit-button" type="submit" value="Send" />
+          </form>
+        </div>
       </div>
     );
   }
+  
+  
 }
 
 export default ChatRoom;
