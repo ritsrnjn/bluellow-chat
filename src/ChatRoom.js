@@ -25,7 +25,7 @@ class ChatRoom extends Component {
       text: ''
     }));
 
-    axios.post('http://127.0.0.1:5000/api', { userPrompt: this.state.text }) // replace with your API endpoint
+    axios.post('https://flask-openai--ritsrnjn.repl.co/api', { userPrompt: this.state.text }) // replace with your API endpoint
       .then(response => {
         const botMessage = {
           id: this.state.messages.length + 1,
