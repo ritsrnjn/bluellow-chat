@@ -27,9 +27,10 @@ class ChatRoom extends Component {
 
     axios.post('https://flask-openai--ritsrnjn.repl.co/api', { userPrompt: this.state.text }) // replace with your API endpoint
       .then(response => {
+        console.log(response.data.privatePrompt);
         const botMessage = {
           id: this.state.messages.length + 1,
-          text: response.data, // modify this based on your API response structure
+          text: response.data.response, // modify this based on your API response structure
           sender: 'bot'
         }
         this.setState(state => ({
